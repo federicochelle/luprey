@@ -18,8 +18,8 @@ export type ImagenGaleria = Imagen & { formato?: Formato };
 export type Reel = { src: string; poster: string; alt: string };
 
 export type AntesDespues = { antes: string; despues: string; alt: string };
-export type Testimonio = { texto: string; autor: string; cargo?: string };
-export type Resultado = { valor: string; label: string };
+type Testimonio = { texto: string; autor: string; cargo?: string };
+type Resultado = { valor: string; label: string };
 
 export type Caso = {
   // --- Obligatorios ---

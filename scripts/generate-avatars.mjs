@@ -36,7 +36,7 @@ const avatares = {
 };
 
 await mkdir(outDir, { recursive: true });
-const creditosPath = path.join(root, "public", "images", "credits.json");
+const creditosPath = path.join(root, "scripts", "credits.json");
 const creditos = JSON.parse(await readFile(creditosPath, "utf8").catch(() => "{}"));
 
 for (const [nombre, opciones] of Object.entries(avatares)) {

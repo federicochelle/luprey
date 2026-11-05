@@ -1,4 +1,4 @@
-export type Paso = { titulo: string; descripcion: string };
+type Paso = { titulo: string; descripcion: string };
 
 export const proceso: Paso[] = [
   {

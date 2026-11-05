@@ -1,4 +1,4 @@
-// Descarga fotos de Pixabay a public/images/ y guarda los créditos.
+// Descarga fotos de Pixabay a public/images/ y guarda los créditos en scripts/credits.json.
 // Uso: npm run fetch-images                        (todas)
 //      npm run fetch-images -- hero catalogos      (solo esas; filtra por texto en la ruta)
 // Requiere PIXABAY_API_KEY en .env.local
@@ -121,7 +121,7 @@ async function buscar(key, query, usados, orientation) {
 }
 
 const key = await loadKey();
-const creditosPath = path.join(outDir, "credits.json");
+const creditosPath = path.join(root, "scripts", "credits.json");
 const creditos = JSON.parse(await readFile(creditosPath, "utf8").catch(() => "{}"));
 const filtros = process.argv.slice(2);
 const aProcesar = filtros.length ? tareas.filter((t) => filtros.some((f) => t.file.includes(f))) : tareas;

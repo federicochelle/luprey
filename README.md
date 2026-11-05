@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Luprey
 
-## Getting Started
+Sitio web de **Luprey**, agencia de marketing de Mercedes y Fray Bentos (Uruguay).
+Next.js (App Router) + TypeScript + Tailwind v4. Sin CMS, sin base de datos ni backend: todo el contenido vive en
+`src/content/` y el formulario de contacto arma un mensaje y abre WhatsApp.
 
-First, run the development server:
+## Cómo correrlo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # compila para producción
+npm run start    # sirve el build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variables de entorno
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copiá `.env.example` a `.env.local` y completalo.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Para qué sirve |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | URL pública del sitio. La usan los canonicals, el sitemap y Open Graph. |
+| `NEXT_PUBLIC_SITE_ENV` | `preview` (por defecto) o `production`. Si no es `production`: `robots.txt` bloquea todo, las páginas llevan `noindex, nofollow` y se muestra la franja "Versión preliminar". |
+| `PIXABAY_API_KEY` | Solo para los scripts que descargan imágenes y videos. Nunca llega al sitio. |
 
-## Learn More
+## Cómo cargar un trabajo nuevo
 
-To learn more about Next.js, take a look at the following resources:
+1. Copiá las imágenes a `public/images/casos/` y, si hay, los videos verticales a `public/videos/casos/`
+   (con su poster en `public/images/casos/`).
+2. Abrí `src/content/casos.ts` y agregá un objeto a `todosLosCasos` con los campos obligatorios
+   (`slug`, `cliente`, `titulo`, `rubro`, `servicios`, `ciudad`, `anio`, `resumen`, `portada`).
+3. Sumá los opcionales que tengas: `galeria`, `reels`, `antesDespues`, `testimonio`, `resultados`.
+   Cada sección de la página solo aparece si el caso tiene ese dato.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El caso aparece solo en `/trabajos`, en el sitemap, en `/trabajos/<slug>` y enlazado desde sus servicios.
+Los servicios, los textos de la home y los de Nosotros están en `src/content/` (`servicios.ts`, `home.ts`, `nosotros.ts`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Flags
 
-## Deploy on Vercel
+- **Contenido de ejemplo:** `SHOW_DEMO_CASES` (`src/content/casos.ts`) y `SHOW_DEMO_CLIENTS` (`src/content/clientes.ts`).
+  Mientras estén en `true`, `next build` avisa. Ponerlos en `false` antes de publicar.
+- **Trazos decorativos:** `MOSTRAR_TRAZOS` (`src/content/trazos.ts`), apagado por defecto. Para sumar la línea
+  original de la marca, pegar su path en `LINEA_ORIGINAL` del mismo archivo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run fetch-images`: descarga fotos de Pixabay (requiere `PIXABAY_API_KEY`).
+- `npm run fetch-videos`: descarga videos verticales de Pixabay para los reels.
+- `npm run generate-avatars`: regenera los avatares del equipo.
+
+Los créditos de lo descargado quedan en `scripts/credits.json`.

@@ -4,7 +4,7 @@
 // - Elige la mejor resolución vertical que pese menos de 4 MB.
 // - Avisa si el archivo trae pista de audio (afinfo) para que elijas otro video.
 // - Guarda el mp4 en public/videos/casos/ y un frame como poster en public/images/casos/.
-// - Suma la entrada a public/images/credits.json.
+// - Suma la entrada a scripts/credits.json.
 import { execFileSync } from "node:child_process";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -38,7 +38,7 @@ const tieneAudio = (file) => {
 };
 
 const key = await loadKey();
-const creditosPath = path.join(root, "public", "images", "credits.json");
+const creditosPath = path.join(root, "scripts", "credits.json");
 const creditos = JSON.parse(await readFile(creditosPath, "utf8").catch(() => "{}"));
 await mkdir(path.join(root, "public", "videos", "casos"), { recursive: true });
 await mkdir(path.join(root, "public", "images", "casos"), { recursive: true });
