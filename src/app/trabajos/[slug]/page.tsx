@@ -4,12 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { CaseGallery } from "@/components/CaseGallery";
-import { CaseReels } from "@/components/CaseReels";
 import { Container } from "@/components/Container";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
-import { casos, getCaso, getSiguienteCaso } from "@/content/casos";
+import { casos, getCaso } from "@/content/casos";
 import { home } from "@/content/home";
 import { getServicio } from "@/content/servicios";
 import { buildMetadata } from "@/lib/metadata";
@@ -35,7 +34,6 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
   if (!caso) notFound();
 
   const serviciosCaso = caso.servicios.map(getServicio).filter((s) => s !== undefined);
-  const siguiente = getSiguienteCaso(caso.slug);
 
   // Fondos de las secciones opcionales: las que no tienen color fijo alternan con la anterior;
   // si quedan del mismo color que la anterior, se unen (sin padding superior doble).
@@ -51,7 +49,6 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
 
   // Antes de renderizar, para que el orden de los tonos siga el orden de las secciones
   const tGaleria = caso.galeria?.length ? siguienteTono("crema") : null;
-  const tReels = caso.reels?.length ? siguienteTono("carbon") : null;
   const tAntesDespues = caso.antesDespues ? siguienteTono() : null;
   const tResultados = hayResultadosOTestimonio ? siguienteTono("crema") : null;
 
@@ -69,19 +66,7 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
           <div className="absolute inset-0 bg-carbon/65" />
         </div>
         <Container className="w-full py-20 sm:py-28">
-          <SectionHeading as="h1" compact id="caso-titulo" eyebrow={caso.cliente} title={caso.titulo} className="max-w-4xl" />
-          <ul aria-label="Servicios del trabajo" className="mt-8 flex flex-wrap gap-3">
-            {serviciosCaso.map((s) => (
-              <li key={s.slug}>
-                <Link
-                  href={`/servicios/${s.slug}`}
-                  className="inline-block rounded-full border border-crema/50 px-4 py-2 text-sm font-bold uppercase tracking-wide transition-colors hover:bg-crema hover:text-carbon"
-                >
-                  {s.titulo}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <SectionHeading as="h1" compact id="caso-titulo" title={caso.titulo} className="max-w-4xl" />
         </Container>
       </section>
 
@@ -112,23 +97,15 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
         </div>
       </Section>
 
-      {/* c. Galería (opcional) */}
+      {/* c. Galería (opcional): fotos y reels en un mismo mosaico */}
       {tGaleria && caso.galeria && (
         <Section tone={tGaleria.tone} labelledBy="galeria-titulo" className={tGaleria.className}>
           <SectionHeading id="galeria-titulo" title="Galería" />
-          <CaseGallery imagenes={caso.galeria} />
+          <CaseGallery elementos={caso.galeria} />
         </Section>
       )}
 
-      {/* d. Reels (opcional, carbón) */}
-      {tReels && caso.reels && (
-        <Section tone={tReels.tone} labelledBy="reels-titulo" className={tReels.className}>
-          <SectionHeading id="reels-titulo" title="Reels" />
-          <CaseReels reels={caso.reels} />
-        </Section>
-      )}
-
-      {/* e. Antes y después (opcional) */}
+      {/* d. Antes y después (opcional) */}
       {tAntesDespues && caso.antesDespues && (
         <Section tone={tAntesDespues.tone} labelledBy="antes-despues-titulo" className={tAntesDespues.className}>
           <SectionHeading id="antes-despues-titulo" title="Antes y después" />
@@ -136,7 +113,7 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
         </Section>
       )}
 
-      {/* f. Resultados y testimonio (opcional, crema) */}
+      {/* e. Resultados y testimonio (opcional, crema) */}
       {tResultados && (
         <Section tone={tResultados.tone} labelledBy="resultados-titulo" className={tResultados.className}>
           <h2 id="resultados-titulo" className="sr-only">
@@ -164,40 +141,12 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
         </Section>
       )}
 
-      {/* g. Siguiente trabajo */}
-      {siguiente && (
-        <section
-          data-tone="carbon"
-          data-ocultar-flotantes
-          aria-label="Siguiente trabajo"
-          className="relative isolate overflow-hidden"
-        >
-          <Link href={`/trabajos/${siguiente.slug}`} className="group block">
-            <div aria-hidden="true" className="absolute inset-0 -z-10">
-              <Image
-                src={siguiente.portada.src}
-                alt=""
-                fill
-                sizes="100vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-carbon/70" />
-            </div>
-            <Container className="py-24 sm:py-32">
-              <p className="text-sm font-bold uppercase tracking-[0.2em]">Siguiente trabajo →</p>
-              <p className="mt-4 text-4xl font-bold uppercase leading-tight sm:text-6xl">{siguiente.cliente}</p>
-              <p className="mt-3 max-w-2xl text-lg text-crema/90">{siguiente.titulo}</p>
-            </Container>
-          </Link>
-        </section>
-      )}
-
-      {/* h. Cierre */}
+      {/* f. Cierre */}
       <CtaBanner
         title={home.ctaGeneral.titulo}
         subtitle={home.ctaGeneral.bajada}
         image={caso.portada.src}
-        variant="crema"
+        variant="carbon"
         defaultService={caso.servicios[0]}
       />
     </>

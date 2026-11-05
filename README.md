@@ -30,8 +30,8 @@ Copiá `.env.example` a `.env.local` y completalo.
    (con su poster en `public/images/casos/`).
 2. Abrí `src/content/casos.ts` y agregá un objeto a `todosLosCasos` con los campos obligatorios
    (`slug`, `cliente`, `titulo`, `rubro`, `servicios`, `ciudad`, `anio`, `resumen`, `portada`).
-3. Sumá los opcionales que tengas: `galeria`, `reels`, `antesDespues`, `testimonio`, `resultados`.
-   Cada sección de la página solo aparece si el caso tiene ese dato.
+3. Sumá los opcionales que tengas: `galeria` (fotos y reels juntos, en el mismo mosaico), `antesDespues`,
+   `testimonio`, `resultados`. Cada sección de la página solo aparece si el caso tiene ese dato.
 
 El caso aparece solo en `/trabajos`, en el sitemap, en `/trabajos/<slug>` y enlazado desde sus servicios.
 Los servicios, los textos de la home y los de Nosotros están en `src/content/` (`servicios.ts`, `home.ts`, `nosotros.ts`).

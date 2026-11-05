@@ -15,16 +15,13 @@ const pestana =
 
 /**
  * Pestañas flotantes pegadas al borde derecho: Instagram arriba y WhatsApp abajo (más ancha, sobresale más).
- * Se ocultan mientras haya a la vista:
- * - un formulario (solo debajo de lg, donde ocupa todo el ancho): para no tapar "Enviar";
- * - un bloque marcado con data-ocultar-flotantes (por ejemplo "Siguiente trabajo"): en cualquier tamaño.
+ * Debajo de lg se ocultan mientras haya un formulario a la vista (ocupa todo el ancho): para no tapar "Enviar".
  * Los diálogos (modal de WhatsApp, lightbox) usan la capa superior del navegador: siempre quedan por encima.
  */
 export function WhatsAppFloat() {
   const { open } = useWhatsAppPicker();
   const pathname = usePathname();
   const [sobreFormulario, setSobreFormulario] = useState(false);
-  const [sobreBloque, setSobreBloque] = useState(false);
 
   useEffect(() => {
     const observar = (selector: string, avisar: (visible: boolean) => void) => {
@@ -40,27 +37,22 @@ export function WhatsAppFloat() {
       return observer;
     };
     const formularios = observar("form", setSobreFormulario);
-    const bloques = observar("[data-ocultar-flotantes]", setSobreBloque);
     return () => {
       formularios.disconnect();
-      bloques.disconnect();
       // al cambiar de página se vuelven a mostrar
       setSobreFormulario(false);
-      setSobreBloque(false);
     };
   }, [pathname]);
 
   return (
     <div
       data-oculto={sobreFormulario}
-      data-oculto-siempre={sobreBloque}
       className={cn(
         // z-40: por debajo del header (y del menú móvil abierto); los diálogos van en la capa superior del navegador
         "fixed right-0 z-40 flex flex-col items-end gap-3 transition-[opacity,translate] duration-200",
         "bottom-5 sm:bottom-8", // misma altura que tenían los botones flotantes
         // Debajo de lg el formulario ocupa todo el ancho: mientras está a la vista se ocultan para no tapar "Enviar"
         "max-lg:data-[oculto=true]:pointer-events-none max-lg:data-[oculto=true]:translate-y-3 max-lg:data-[oculto=true]:opacity-0",
-        "data-[oculto-siempre=true]:pointer-events-none data-[oculto-siempre=true]:translate-y-3 data-[oculto-siempre=true]:opacity-0",
       )}
     >
       <a
