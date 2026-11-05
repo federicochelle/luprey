@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Paleta de marca */
+@theme {
+  --color-crema: #fcfaee;
+  --color-carbon: #26282c;
+  --color-oliva: #6e7262;
 }
 
+/* Fuente (la variable la define next/font en el layout raíz) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Tokens "de tono": cambian según la sección sea crema o carbón */
+  --color-tone-bg: var(--tone-bg);
+  --color-tone-fg: var(--tone-fg);
+  --color-tone-accent: var(--tone-accent);
+  --color-tone-line: var(--tone-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  :root,
+  [data-tone="crema"] {
+    --tone-bg: #fcfaee;
+    --tone-fg: #26282c;
+    --tone-accent: #6e7262; /* oliva sobre crema: contraste ~4.6:1 */
+    --tone-line: rgb(38 40 44 / 0.15);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  [data-tone="carbon"] {
+    --tone-bg: #26282c;
+    --tone-fg: #fcfaee;
+    --tone-accent: rgb(252 250 238 / 0.72); /* el oliva no alcanza contraste sobre carbón */
+    --tone-line: rgb(252 250 238 / 0.2);
+  }
+
+  [data-tone] {
+    background-color: var(--tone-bg);
+    color: var(--tone-fg);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--tone-bg);
+    color: var(--tone-fg);
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }

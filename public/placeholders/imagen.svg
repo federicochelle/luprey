@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#6E7262"/>
+  <rect x="40" y="40" width="1120" height="820" fill="none" stroke="#FCFAEE" stroke-opacity=".4" stroke-width="2" stroke-dasharray="12 12"/>
+  <text x="600" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#FCFAEE" fill-opacity=".85">IMAGEN PLACEHOLDER</text>
+</svg>
