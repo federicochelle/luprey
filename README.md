@@ -48,5 +48,8 @@ Los servicios, los textos de la home y los de Nosotros están en `src/content/` 
 - `npm run fetch-images`: descarga fotos de Pixabay (requiere `PIXABAY_API_KEY`).
 - `npm run fetch-videos`: descarga videos verticales de Pixabay para los reels.
 - `npm run generate-avatars`: regenera los avatares del equipo.
+- `npm run optimize-images`: comprime las imágenes de `public/images/` (máx. 1920 px de ancho, calidad 80 y
+  menos de 300 KB cada una). Correrlo cada vez que se sumen fotos: el sitio usa `images.unoptimized`, así que las
+  imágenes se sirven tal cual están.
 
 Los créditos de lo descargado quedan en `scripts/credits.json`.

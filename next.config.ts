@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  // Vercel agotó el límite gratis de Image Optimization: las imágenes se sirven tal cual están en public/.
+  // Por eso hay que comprimirlas antes (npm run optimize-images: máx. 1920 px y 300 KB).
+  images: { unoptimized: true },
   turbopack: {
     rules: {
       "*.css": {
