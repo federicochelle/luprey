@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Servicios de marketing",
   description:
-    "Redes sociales, diseño gráfico, contenido, fotografía y catálogos para marcas de Mercedes, Soriano y todo Uruguay.",
+    "Redes sociales, diseño gráfico, contenido, fotografía y catálogos para marcas de Mercedes, Fray Bentos y todo Uruguay.",
   path: "/servicios",
 });
 
@@ -17,11 +17,12 @@ export default function ServiciosPage() {
     <>
       <PageHero
         id="servicios-titulo"
-        eyebrow="Servicios"
+        tone="carbon"
         title="Todo lo que tu marca necesita"
-        intro="Elegí un servicio o combinalos: armamos la propuesta a la medida de tu negocio."
+        intro="Si tu marca no está creciendo, algo está pasando. Y probablemente ya lo sentís."
       />
-      <Section tone="carbon" labelledBy="servicios-lista">
+      {/* Mismo fondo que el hero: sin padding superior para no duplicar el espacio entre ambos */}
+      <Section tone="carbon" labelledBy="servicios-lista" className="pt-0 sm:pt-0">
         <h2 id="servicios-lista" className="sr-only">
           Listado de servicios
         </h2>
@@ -33,7 +34,7 @@ export default function ServiciosPage() {
           ))}
         </ul>
       </Section>
-      <CtaBanner id="servicios-cta" tone="crema" />
+      <CtaBanner title="No lo dejes para más adelante. Escribinos." image="/images/hero/hero.jpg" variant="crema" />
     </>
   );
 }

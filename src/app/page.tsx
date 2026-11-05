@@ -1,18 +1,23 @@
 import { Button } from "@/components/Button";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { Container } from "@/components/Container";
+import { HeroBackground } from "@/components/HeroBackground";
 import { CaseCard } from "@/components/CaseCard";
 import { ClientLogos } from "@/components/ClientLogos";
 import { CtaBanner } from "@/components/CtaBanner";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { Section } from "@/components/Section";
+import { Trazo } from "@/components/Trazo";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
 import { getCasosDestacados } from "@/content/casos";
 import { servicios } from "@/content/servicios";
-import { site, whatsappUrl } from "@/content/site";
+import { home } from "@/content/home";
+import { site } from "@/content/site";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: `${site.nombre} | Agencia de marketing en Mercedes, Soriano`,
+  title: `${site.nombre} | Agencia de marketing en Mercedes y Fray Bentos`,
   description: site.descripcion,
   path: "/",
   absoluteTitle: true,
@@ -23,29 +28,30 @@ export default function Home() {
 
   return (
     <>
-      <Section tone="crema" labelledBy="hero-titulo" className="pb-16 pt-16 sm:pt-28">
-        <SectionHeading
-          as="h1"
-          id="hero-titulo"
-          title="Nos metemos en tu marca como si fuera nuestra."
-          intro={site.tagline}
-          className="max-w-4xl"
-        />
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Button href={whatsappUrl()} external>
-            Hablemos por WhatsApp
-          </Button>
-          <Button href="/trabajos" variant="outline">
-            Ver trabajos
-          </Button>
-        </div>
-        <ClientLogos />
-      </Section>
+      <section
+        data-tone="carbon"
+        aria-labelledby="hero-titulo"
+        // Alto = viewport (svh: la parte visible aunque haya barras del navegador en mobile). Subtítulo casi en crema pleno: contraste AA
+        className="relative isolate flex min-h-svh items-center overflow-hidden [--tone-accent:rgb(252_250_238/0.92)]"
+      >
+        <HeroBackground images={home.heroImages} />
+        {/* Entre el fondo (z-0) y el contenido (z-10) */}
+        <Trazo variant="gancho" position="top-left" zClass="z-[5]" mobile="chico" />
+        {/* Más padding arriba que abajo: baja el contenido respecto del centro del hero */}
+        <Container className="relative z-10 pb-16 pt-32 sm:pb-20 sm:pt-52">
+          <SectionHeading as="h1" id="hero-titulo" title={home.hero.titulo} intro={home.hero.subtitulo} />
+          <div className="mt-10 flex flex-wrap gap-4">
+            <WhatsAppButton>Hablemos por WhatsApp</WhatsAppButton>
+            <Button href="/trabajos" variant="outline">
+              Ver trabajos
+            </Button>
+          </div>
+        </Container>
+      </section>
 
       <Section tone="carbon" labelledBy="servicios-titulo">
         <SectionHeading
           id="servicios-titulo"
-          eyebrow="Servicios"
           title="Lo que hacemos por tu marca"
           intro="Todo lo que necesitás para comunicar mejor, en un solo lugar."
         />
@@ -61,11 +67,13 @@ export default function Home() {
       <Section tone="crema" labelledBy="casos-titulo">
         <SectionHeading
           id="casos-titulo"
-          eyebrow="Trabajos"
-          title="Casos destacados"
-          intro="Marcas reales con las que nos metimos de lleno."
+          title={home.casos.titulo}
+          intro={home.casos.bajada}
         />
-        <ul className="mt-14 grid gap-10 sm:grid-cols-2">
+        <div className="mt-12">
+          <ClientLogos />
+        </div>
+        <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {destacados.map((caso) => (
             <li key={caso.slug}>
               <CaseCard caso={caso} />
@@ -79,17 +87,21 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section tone="carbon" labelledBy="proceso-titulo">
+      <Section tone="carbon" labelledBy="proceso-titulo" className="grain">
         <SectionHeading
           id="proceso-titulo"
-          eyebrow="Proceso"
-          title="Cómo trabajamos"
-          intro="Cuatro pasos simples, siempre con vos al lado."
+          title={home.proceso.titulo}
+          intro={home.proceso.bajada}
         />
         <ProcessSteps />
       </Section>
 
-      <CtaBanner id="cta-titulo" tone="crema" />
+      <CtaBanner
+        title={home.cta.titulo}
+        image="/images/hero/hero-2.jpg"
+        variant="crema"
+        trazo={{ variant: "ola", position: "bottom-left" }}
+      />
     </>
   );
 }

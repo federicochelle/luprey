@@ -1,17 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
+import { LogoMark } from "./LogoMark";
 
-/** Logo "Luprey." (placeholder en /public/logo.svg). variant="claro" para fondos oscuros. */
-export function Logo({ variant = "oscuro" }: { variant?: "oscuro" | "claro" }) {
+/**
+ * Logo "Luprey." como link al inicio. El color lo da el texto del contenedor (currentColor):
+ * en el header cambia junto con el navbar (crema transparente -> carbón sólido) y en el footer es crema.
+ */
+export function Logo() {
   return (
-    <Link href="/" className="inline-block">
-      <Image
-        src={variant === "claro" ? "/logo-claro.svg" : "/logo.svg"}
-        alt="Luprey, ir al inicio"
-        width={140}
-        height={36}
-        priority
-      />
+    <Link href="/" aria-label="Luprey, ir al inicio" className="inline-block">
+      <LogoMark className="h-7 w-auto sm:h-8" />
     </Link>
   );
 }

@@ -18,8 +18,12 @@ const variants = {
   outline: "border-tone-fg text-tone-fg hover:bg-tone-fg hover:text-tone-bg",
 };
 
+export function buttonClasses(variant: keyof typeof variants = "solid", className?: string) {
+  return cn(base, variants[variant], className);
+}
+
 export function Button({ href, variant = "solid", external, className, children }: Props) {
-  const classes = cn(base, variants[variant], className);
+  const classes = buttonClasses(variant, className);
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>

@@ -1,34 +1,45 @@
+// Contenido de /nosotros. Lo marcado [REVISAR] es un borrador a confirmar.
 export const nosotros = {
-  historia: {
-    titulo: "Una agencia de acá, para marcas de acá",
-    parrafos: [
-      "Luprey nació en Mercedes, Soriano, con una idea simple: que las marcas locales tengan una comunicación a la altura de lo que hacen.",
-      "[COMPLETAR] Contar la historia real: cómo empezó, quiénes la fundaron y qué las y los motivó.",
-    ],
+  // Primera sección de la página: lleva el h1
+  queEs: {
+    titulo: "Somos Luprey.",
+    texto:
+      "Somos una agencia de marketing que acompaña a negocios y marcas que quieren comunicar mejor. Pensamos la estrategia, creamos el contenido y estamos en el día a día de cada marca. Trabajamos desde Mercedes y Fray Bentos. [REVISAR]",
+    imagen: "/images/nosotros/que-es.jpg",
   },
-  formaDeTrabajar: {
-    titulo: "Cómo trabajamos",
-    valores: [
-      {
-        titulo: "Cercanía",
-        descripcion: "Hablamos claro, respondemos rápido y conocemos tu negocio por dentro.",
-      },
-      {
-        titulo: "Estrategia primero",
-        descripcion: "Antes de publicar, pensamos qué querés lograr y para quién.",
-      },
-      {
-        titulo: "Resultados compartidos",
-        descripcion: "Si a nuestros clientes les va bien, a nosotros también.",
-      },
-    ],
-  },
+  pensamos: [
+    {
+      titulo: "No todo se vende con un post.",
+      texto: "Hay rubros que necesitan tiempo, estrategia y presencia constante. Nosotras trabajamos para eso.",
+      imagen: "/images/nosotros/pensamos-1.jpg",
+    },
+    {
+      titulo: "Subir contenido sin pensar no es estrategia.",
+      texto: "Es solo ruido. Y el ruido no construye marcas.",
+      imagen: "/images/nosotros/pensamos-2.jpg",
+    },
+    {
+      titulo: "Estar en redes no es suficiente.",
+      texto: "La diferencia está en cómo mostrás lo que hacés. Ahí es donde trabajamos.",
+      imagen: "/images/nosotros/pensamos-3.jpg",
+    },
+    {
+      titulo: "Estamos. Y se nota.",
+      texto: "Respondemos. Nos involucramos. Y estamos cuando hace falta.",
+      imagen: "/images/nosotros/pensamos-4.jpg",
+    },
+  ],
   equipo: {
-    titulo: "El equipo",
+    titulo: "Las caras detrás de Luprey",
+    // `contacto` es el id en site.contactos (para el botón de WhatsApp directo)
     integrantes: [
-      { nombre: "[COMPLETAR]", rol: "[COMPLETAR]", imagen: "/placeholders/persona.svg" },
-      { nombre: "[COMPLETAR]", rol: "[COMPLETAR]", imagen: "/placeholders/persona.svg" },
-      { nombre: "[COMPLETAR]", rol: "[COMPLETAR]", imagen: "/placeholders/persona.svg" },
+      { nombre: "Sofía Pérez", ciudad: "Mercedes", contacto: "mercedes", imagen: "/images/equipo/sofia-perez.svg" },
+      { nombre: "Sofía Giurgi", ciudad: "Fray Bentos", contacto: "fray-bentos", imagen: "/images/equipo/sofia-giurgi.svg" },
     ],
+  },
+  cierre: {
+    titulo: "No es solo lo que hacemos. Es cómo lo hacemos.",
+    bajada: "Si a nuestros clientes les va bien, a nosotras también.",
+    imagen: "/images/hero/hero-3.jpg",
   },
 };

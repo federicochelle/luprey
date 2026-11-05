@@ -1,15 +1,16 @@
 import type { MetadataRoute } from "next";
-import { casos } from "@/content/casos";
+import { casosReales } from "@/content/casos";
 import { servicios } from "@/content/servicios";
 import { site } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Los casos demo no entran al sitemap
   const rutas = [
     "/",
     "/servicios",
     ...servicios.map((s) => `/servicios/${s.slug}`),
     "/trabajos",
-    ...casos.map((c) => `/trabajos/${c.slug}`),
+    ...casosReales.map((c) => `/trabajos/${c.slug}`),
     "/nosotros",
     "/contacto",
   ];

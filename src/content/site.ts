@@ -1,42 +1,80 @@
 // Datos generales del sitio. Todo lo que diga [COMPLETAR] falta cargarlo.
 
+export type Contacto = {
+  id: string;
+  nombre: string;
+  ciudad: string;
+  /** Como se muestra en pantalla */
+  telefono: string;
+  /** Formato internacional sin + ni espacios (para wa.me) */
+  whatsapp: string;
+};
+
 export const site = {
   nombre: "Luprey",
   tagline: "Estrategia + contenido + cercanía.",
   descripcion:
-    "Luprey es una agencia de marketing de Mercedes, Soriano. Nos metemos en tu marca como si fuera nuestra: estrategia, contenido y redes con cercanía.",
+    "Luprey es una agencia de marketing con base en Mercedes y Fray Bentos, Uruguay. Construimos marcas que comunican mejor: estrategia, contenido y cercanía.",
   // Dominio final: definilo en NEXT_PUBLIC_SITE_URL (ej. https://tudominio.com.uy)
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
-  whatsapp: {
-    numero: "[COMPLETAR]", // formato internacional sin + ni espacios, ej. 598XXXXXXXX
-    mostrar: "[COMPLETAR]", // como se ve en pantalla, ej. 09X XXX XXX
-    mensaje: "Hola Luprey! Quiero hablar sobre mi marca.",
-  },
-  email: "[COMPLETAR]",
+  // Dos socias, dos ciudades
+  contactos: [
+    {
+      id: "mercedes",
+      nombre: "Sofía Pérez",
+      ciudad: "Mercedes",
+      telefono: "091 614 708",
+      whatsapp: "59891614708",
+    },
+    {
+      id: "fray-bentos",
+      nombre: "Sofía Giurgi",
+      ciudad: "Fray Bentos",
+      telefono: "099 985 561",
+      whatsapp: "59899985561",
+    },
+  ] satisfies Contacto[],
+  mensajeWhatsapp: "Hola Luprey! Quiero hablar sobre mi marca.",
+
+  // TODO: confirmar email real con Luprey
+  email: "hola@luprey.com.uy",
   instagram: {
     usuario: "@luprey.agenciademarketing",
     url: "https://www.instagram.com/luprey.agenciademarketing/",
   },
   ubicacion: {
-    ciudad: "Mercedes",
-    departamento: "Soriano",
+    ciudades: ["Mercedes", "Fray Bentos"],
     pais: "Uruguay",
-    direccion: "[COMPLETAR]",
+    texto: "Mercedes y Fray Bentos, Uruguay",
   },
 
   menu: [
-    { label: "Inicio", href: "/" },
     { label: "Servicios", href: "/servicios" },
     { label: "Trabajos", href: "/trabajos" },
     { label: "Nosotros", href: "/nosotros" },
     { label: "Contacto", href: "/contacto" },
   ],
-} as const;
+};
 
-export function whatsappUrl(mensaje: string = site.whatsapp.mensaje) {
-  const digitos = site.whatsapp.numero.replace(/\D/g, "");
-  return `https://wa.me/${digitos}?text=${encodeURIComponent(mensaje)}`;
+/**
+ * Páginas con hero oscuro: el header arranca transparente (logo claro, links crema) y el contenido sube detrás de él.
+ * Para sumar una página, agregá su ruta exacta a `exactas` o un prefijo a `prefijos` (ej. "/trabajos/" = solo las de detalle).
+ */
+export const headerTransparente = {
+  exactas: ["/"],
+  prefijos: ["/trabajos/"],
+};
+
+export function tieneHeaderTransparente(pathname: string) {
+  return (
+    headerTransparente.exactas.includes(pathname) ||
+    headerTransparente.prefijos.some((prefijo) => pathname.startsWith(prefijo))
+  );
+}
+
+export function whatsappUrl(contacto: Pick<Contacto, "whatsapp">, mensaje: string = site.mensajeWhatsapp) {
+  return `https://wa.me/${contacto.whatsapp}?text=${encodeURIComponent(mensaje)}`;
 }
 
 export function emailUrl() {

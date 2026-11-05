@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/Button";
-import { CaseCard } from "@/components/CaseCard";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Faq } from "@/components/Faq";
 import { PageHero } from "@/components/PageHero";
+import { ServiceIcon } from "@/components/ServiceIcon";
 import { Section } from "@/components/Section";
 import { SectionHeading } from "@/components/SectionHeading";
-import { casos, getCasosPorServicio } from "@/content/casos";
+import { Trazo } from "@/components/Trazo";
+import { SplitSection } from "@/components/SplitSection";
+import { casos, getCasosDestacados, getCasosPorServicio } from "@/content/casos";
 import { getServicio, servicios } from "@/content/servicios";
-import { whatsappUrl } from "@/content/site";
+import { home } from "@/content/home";
 import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -32,27 +34,28 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
   const servicio = getServicio(slug);
   if (!servicio) notFound();
 
-  // Si ningún caso usa este servicio, mostramos igual un trabajo de la agencia.
-  const relacionados = getCasosPorServicio(servicio.slug);
-  const caso = relacionados[0] ?? casos[0];
+  // El primer caso que incluya este servicio; solo si no hay ninguno, un caso destacado.
+  const caso = getCasosPorServicio(servicio.slug)[0] ?? getCasosDestacados()[0] ?? casos[0];
+  const serviciosCaso = caso ? caso.servicios.map(getServicio).filter((s) => s !== undefined) : [];
 
   return (
     <>
-      <PageHero id="servicio-titulo" eyebrow="Servicio" title={servicio.titulo} intro={servicio.descripcionLarga}>
-        <Button href={whatsappUrl(`Hola Luprey! Quiero consultar por ${servicio.titulo}.`)} external>
-          Consultar por WhatsApp
-        </Button>
-        <Button href="/servicios" variant="outline">
-          Ver todos los servicios
-        </Button>
-      </PageHero>
+      <PageHero
+        id="servicio-titulo"
+        icon={<ServiceIcon icon={servicio.icon} size="lg" />}
+        image={{ src: servicio.image }}
+        title={servicio.titulo}
+        intro={servicio.descripcionLarga}
+      />
 
-      <Section tone="carbon" labelledBy="incluye-titulo">
+      {/* Qué incluye: ancho completo, ítems en grilla */}
+      <Section tone="carbon" labelledBy="incluye-titulo" className="relative isolate overflow-hidden">
+        <Trazo variant="espiral" position="top-right" />
         <SectionHeading id="incluye-titulo" title="Qué incluye" />
-        <ul className="mt-12 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+        <ul className="mt-12 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {servicio.incluye.map((item) => (
-            <li key={item} className="flex gap-4 border-t border-tone-line pt-5">
-              <span aria-hidden="true" className="font-bold">
+            <li key={item} className="flex gap-4 border-b border-tone-line pb-5 text-lg">
+              <span aria-hidden="true" className="font-bold text-oliva">
                 ✓
               </span>
               <span>{item}</span>
@@ -61,35 +64,38 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
         </ul>
       </Section>
 
-      <Section tone="crema" labelledBy="para-quien-titulo">
-        <SectionHeading id="para-quien-titulo" title="Para quién es" />
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
-          {servicio.paraQuien.map((item) => (
-            <li key={item} className="rounded-2xl border border-tone-line p-6">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
+      {/* Un trabajo nuestro: el caso relacionado (o uno destacado si no hay) */}
       {caso && (
-        <Section tone="carbon" labelledBy="caso-titulo">
-          <SectionHeading
-            id="caso-titulo"
-            title={relacionados.length > 0 ? "Un caso relacionado" : "Un trabajo nuestro"}
-          />
-          <div className="mt-12 max-w-xl">
-            <CaseCard caso={caso} />
+        <SplitSection
+          reverse
+          variant="crema"
+          eyebrow={`Un trabajo nuestro · ${caso.rubro}`}
+          title={caso.cliente}
+          compactTitle
+          image={caso.portada.src}
+        >
+          <div className="mt-6">
+            <p className="text-tone-accent">{caso.resumen}</p>
+            <p className="mt-2 text-tone-accent">Qué hicimos: {serviciosCaso.map((s) => s.titulo).join(" + ")}.</p>
+            <Button href={`/trabajos/${caso.slug}`} className="mt-8">
+              Ver trabajo
+            </Button>
           </div>
-        </Section>
+        </SplitSection>
       )}
 
-      <Section tone="crema" labelledBy="faq-titulo">
+      <Section tone="carbon" labelledBy="faq-titulo">
         <SectionHeading id="faq-titulo" title="Preguntas frecuentes" />
         <Faq items={servicio.faqs} />
       </Section>
 
-      <CtaBanner id="servicio-cta" tone="carbon" buttonLabel="Hablemos por WhatsApp" />
+      <CtaBanner
+        title={home.ctaGeneral.titulo}
+        subtitle={home.ctaGeneral.bajada}
+        image={servicio.image}
+        variant="crema"
+        defaultService={servicio.slug}
+      />
     </>
   );
 }

@@ -1,54 +1,80 @@
+import { Mail, MapPin } from "lucide-react";
 import Link from "next/link";
-import { emailUrl, site, whatsappUrl } from "@/content/site";
+import type { ReactNode } from "react";
+import { emailUrl, site } from "@/content/site";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 
+const iconClasses = "size-5";
+
+/**
+ * Dato de contacto: ícono en un círculo + texto visible, todo dentro del mismo link.
+ * `contexto` es texto solo para lectores de pantalla (qué es el dato).
+ */
+function ContactLink({
+  href,
+  icon,
+  texto,
+  contexto,
+  external,
+}: {
+  href: string;
+  icon: ReactNode;
+  texto: string;
+  contexto: string;
+  external?: boolean;
+}) {
+  const classes = "group flex items-center gap-3 hover:underline";
+  const contenido = (
+    <>
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-tone-line transition-colors group-hover:border-tone-fg group-hover:bg-tone-fg/10">
+        {icon}
+      </span>
+      <span>
+        <span className="sr-only">{contexto}: </span>
+        {texto}
+        {external && <span className="sr-only"> (se abre en una pestaña nueva)</span>}
+      </span>
+    </>
+  );
+  return external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+      {contenido}
+    </a>
+  ) : (
+    <Link href={href} className={classes}>
+      {contenido}
+    </Link>
+  );
+}
+
 export function Footer() {
-  const { ubicacion } = site;
   return (
-    <footer data-tone="carbon" className="py-16">
-      <Container className="grid gap-12 md:grid-cols-3">
+    <footer data-tone="carbon" className="bg-carbon-profundo py-16">
+      <Container className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
         <div>
-          <Logo variant="claro" />
+          <Logo />
           <p className="mt-4 max-w-xs text-tone-accent">{site.tagline}</p>
         </div>
 
-        <nav aria-label="Pie de página">
-          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-tone-accent">Navegación</h2>
-          <ul className="mt-4 space-y-2">
-            {site.menu.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="hover:underline">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div>
-          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-tone-accent">Contacto</h2>
-          <ul className="mt-4 space-y-2">
-            <li>
-              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                WhatsApp: {site.whatsapp.mostrar}
-              </a>
-            </li>
-            <li>
-              <a href={emailUrl()} className="hover:underline">
-                {site.email}
-              </a>
-            </li>
-            <li>
-              <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Instagram: {site.instagram.usuario}
-              </a>
-            </li>
-            <li>
-              {ubicacion.ciudad}, {ubicacion.departamento}, {ubicacion.pais}
-            </li>
-          </ul>
-        </div>
+        <ul aria-label="Contacto" className="space-y-3">
+          <li>
+            <ContactLink
+              href={emailUrl()}
+              icon={<Mail strokeWidth={1.5} className={iconClasses} aria-hidden="true" />}
+              contexto="Email"
+              texto={site.email}
+            />
+          </li>
+          <li>
+            <ContactLink
+              href="/contacto"
+              icon={<MapPin strokeWidth={1.5} className={iconClasses} aria-hidden="true" />}
+              contexto="Ubicación"
+              texto={site.ubicacion.texto}
+            />
+          </li>
+        </ul>
       </Container>
       <Container className="mt-12 border-t border-tone-line pt-6 text-sm text-tone-accent">
         <p>© {site.nombre}. Todos los derechos reservados.</p>
