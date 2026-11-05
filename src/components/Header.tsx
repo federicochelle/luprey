@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { site, tieneHeaderTransparente } from "@/content/site";
+import { esProduccion, site, tieneHeaderTransparente } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
@@ -65,7 +65,8 @@ export function Header() {
       <header
         data-tone={transparente ? "carbon" : "crema"}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow,color] duration-[250ms] ease-out",
+          esProduccion ? "top-0" : "top-8", // con la franja de preview, el header baja 2rem
+          "fixed inset-x-0 z-50 border-b transition-[background-color,border-color,box-shadow,color] duration-[250ms] ease-out",
           transparente ? "border-transparent bg-transparent" : "border-tone-line bg-crema/95 shadow-sm backdrop-blur",
         )}
       >

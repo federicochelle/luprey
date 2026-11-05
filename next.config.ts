@@ -25,6 +25,9 @@ export default function config(phase: string): NextConfig {
       SHOW_DEMO_CASES && "SHOW_DEMO_CASES (src/content/casos.ts)",
       SHOW_DEMO_CLIENTS && "SHOW_DEMO_CLIENTS (src/content/clientes.ts)",
     ].filter(Boolean);
+    if (process.env.NEXT_PUBLIC_SITE_ENV === "production" && !process.env.NEXT_PUBLIC_SITE_URL) {
+      console.warn("\n⚠️  NEXT_PUBLIC_SITE_ENV=production pero falta NEXT_PUBLIC_SITE_URL: canonicals y sitemap saldrán con localhost.\n");
+    }
     if (activos.length) {
       console.warn(
         `\n⚠️  CONTENIDO DEMO ACTIVO: ${activos.join(" y ")} está en true.\n` +

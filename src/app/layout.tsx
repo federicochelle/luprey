@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { PageMain } from "@/components/PageMain";
+import { PreviewBanner } from "@/components/PreviewBanner";
 import { WhatsAppPicker } from "@/components/WhatsAppPicker";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { site } from "@/content/site";
+import { esProduccion, site } from "@/content/site";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
     template: `%s | ${site.nombre}`,
   },
   description: site.descripcion,
+  // Fuera de producción no se indexa nada (ver esProduccion en content/site.ts)
+  robots: esProduccion ? undefined : { index: false, follow: false },
   openGraph: {
     siteName: site.nombre,
     locale: "es_UY",
@@ -40,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Saltar al contenido
           </a>
+          <PreviewBanner />
           <Header />
           <PageMain>{children}</PageMain>
           <Footer />

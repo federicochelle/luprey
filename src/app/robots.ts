@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/content/site";
+import { esProduccion, site } from "@/content/site";
 
 export default function robots(): MetadataRoute.Robots {
+  // Preview: nada se indexa hasta el lanzamiento
+  if (!esProduccion) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/", disallow: "/dev/" },
+    rules: { userAgent: "*", allow: "/" },
     sitemap: `${site.url}/sitemap.xml`,
   };
 }
