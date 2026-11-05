@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/trabajos/[slug]">
   const caso = getCaso(slug);
   if (!caso) return {};
   return buildMetadata({
-    title: `${caso.cliente}: ${caso.titulo}`,
+    title: `${caso.cliente} · ${caso.titulo}`,
     description: caso.resumen,
     path: `/trabajos/${caso.slug}`,
   });

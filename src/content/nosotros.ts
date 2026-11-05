@@ -1,10 +1,11 @@
 // Contenido de /nosotros. Lo marcado [REVISAR] es un borrador a confirmar.
 export const nosotros = {
   // Primera sección de la página: lleva el h1
+  // [REVISAR] el texto de "Somos Luprey" es un borrador: confirmarlo con Luprey
   queEs: {
     titulo: "Somos Luprey.",
     texto:
-      "Somos una agencia de marketing que acompaña a negocios y marcas que quieren comunicar mejor. Pensamos la estrategia, creamos el contenido y estamos en el día a día de cada marca. Trabajamos desde Mercedes y Fray Bentos. [REVISAR]",
+      "Somos una agencia de marketing que acompaña a negocios y marcas que quieren comunicar mejor. Pensamos la estrategia, creamos el contenido y estamos en el día a día de cada marca. Trabajamos desde Mercedes y Fray Bentos.",
     imagen: "/images/nosotros/que-es.jpg",
   },
   pensamos: [

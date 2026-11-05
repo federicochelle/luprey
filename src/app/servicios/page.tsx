@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/metadata";
 export const metadata = buildMetadata({
   title: "Servicios de marketing",
   description:
-    "Redes sociales, diseño gráfico, contenido, fotografía y catálogos para marcas de Mercedes, Fray Bentos y todo Uruguay.",
+    "Redes sociales, diseño gráfico, contenido, fotografía, catálogos y desarrollo web para marcas de Mercedes, Fray Bentos y todo Uruguay.",
   path: "/servicios",
 });
 

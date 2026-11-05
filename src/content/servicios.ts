@@ -39,7 +39,9 @@ export const servicios: Servicio[] = [
       },
       {
         pregunta: "¿Cuántas publicaciones por semana incluye?",
-        respuesta: "[COMPLETAR] Depende del plan y de lo que necesite tu marca. Lo definimos juntos en la estrategia.",
+        // [COMPLETAR] confirmar la frecuencia de publicación por plan
+        respuesta:
+          "Depende de lo que necesite tu marca y de en qué redes quieras estar. Lo definimos juntas en la estrategia, para publicar con constancia y sin saturar.",
       },
       {
         pregunta: "¿Cómo sé si está funcionando?",
@@ -67,15 +69,21 @@ export const servicios: Servicio[] = [
     faqs: [
       {
         pregunta: "¿Hacen logos e identidad de marca?",
-        respuesta: "[COMPLETAR] Confirmar si el desarrollo de identidad completa forma parte del servicio.",
+        // [COMPLETAR] confirmar si el desarrollo de identidad completa forma parte del servicio
+        respuesta:
+          "Trabajamos a partir de tu identidad actual y la ordenamos para que se use igual en todos lados. Si todavía no tenés una, lo charlamos y vemos cómo encararla.",
       },
       {
         pregunta: "¿Me entregan los archivos editables?",
-        respuesta: "[COMPLETAR] Definir qué formatos se entregan en cada trabajo.",
+        // [COMPLETAR] definir qué formatos se entregan en cada trabajo
+        respuesta:
+          "Sí, te dejamos las piezas listas para usar y, cuando corresponde, plantillas editables para que mantengas el estilo por tu cuenta.",
       },
       {
         pregunta: "¿Cuántas correcciones incluye?",
-        respuesta: "[COMPLETAR] Definir la cantidad de rondas de ajustes por pieza.",
+        // [COMPLETAR] definir la cantidad de rondas de ajustes por pieza
+        respuesta:
+          "Incluimos ajustes sobre cada pieza hasta que quede como querés. Lo acordamos al empezar para que todo sea claro.",
       },
     ],
   },
@@ -107,7 +115,9 @@ export const servicios: Servicio[] = [
       },
       {
         pregunta: "¿Cuánto tarda la entrega?",
-        respuesta: "[COMPLETAR] Definir plazos habituales de edición y entrega.",
+        // [COMPLETAR] definir plazos habituales de edición y entrega
+        respuesta:
+          "Depende de la cantidad de piezas. Antes de empezar te contamos los tiempos para que puedas planificar tus publicaciones.",
       },
     ],
   },
@@ -134,11 +144,15 @@ export const servicios: Servicio[] = [
       },
       {
         pregunta: "¿Cuántas fotos entregan?",
-        respuesta: "[COMPLETAR] Definir cantidad de fotos editadas por sesión.",
+        // [COMPLETAR] definir la cantidad de fotos editadas por sesión
+        respuesta:
+          "Depende del tipo de sesión y de lo que necesites mostrar. Lo definimos antes de producir, así sabés qué vas a recibir.",
       },
       {
         pregunta: "¿Puedo usar las fotos donde quiera?",
-        respuesta: "[COMPLETAR] Definir condiciones de uso y derechos de las imágenes.",
+        // [COMPLETAR] definir condiciones de uso y derechos de las imágenes
+        respuesta:
+          "Las imágenes son para que las uses en tu comunicación: redes, web, catálogos e impresos. Si necesitás otro uso, lo conversamos.",
       },
     ],
   },
@@ -161,7 +175,9 @@ export const servicios: Servicio[] = [
     faqs: [
       {
         pregunta: "¿Se puede actualizar cuando cambian los productos?",
-        respuesta: "[COMPLETAR] Definir si se ofrecen actualizaciones y cómo se coordinan.",
+        // [COMPLETAR] definir si se ofrecen actualizaciones y cómo se coordinan
+        respuesta:
+          "Sí, podemos actualizarlo cuando cambien tus productos o precios. Lo coordinamos con vos según cómo vayas a usar el catálogo.",
       },
       {
         pregunta: "¿Es digital o impreso?",
@@ -193,15 +209,21 @@ export const servicios: Servicio[] = [
     faqs: [
       {
         pregunta: "¿Cuánto tarda en estar listo el sitio?",
-        respuesta: "[COMPLETAR] Depende del tamaño del proyecto. Te pasamos un plazo concreto después de conocer tu negocio.",
+        // [COMPLETAR] confirmar plazos reales según el tamaño del proyecto
+        respuesta:
+          "Depende del tamaño del proyecto. Te pasamos un plazo concreto después de conocer tu negocio.",
       },
       {
         pregunta: "¿Voy a poder actualizar el contenido yo?",
-        respuesta: "[COMPLETAR] Definir si el sitio incluye edición autónoma o si las actualizaciones las hace Luprey.",
+        // [COMPLETAR] definir si el sitio incluye edición autónoma o si las actualizaciones las hace Luprey
+        respuesta:
+          "Lo pensamos según cómo trabajes. Podés encargarnos las actualizaciones o dejar partes del sitio listas para que las cambies vos; lo definimos juntas.",
       },
       {
         pregunta: "¿Incluye dominio y hosting?",
-        respuesta: "[COMPLETAR] Definir qué se incluye y cómo se gestionan el dominio y el hosting.",
+        // [COMPLETAR] definir qué se incluye y cómo se gestionan el dominio y el hosting
+        respuesta:
+          "Te ayudamos a elegir, configurar y publicar el sitio con tu dominio. Te explicamos qué necesitás para mantenerlo en línea.",
       },
       {
         pregunta: "¿Se integra con mis redes y WhatsApp?",

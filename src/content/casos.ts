@@ -62,7 +62,8 @@ const reel = (n: number, alt: string): Reel => ({
 
 const todosLosCasos: Caso[] = [
   // ---------- REALES ----------
-  // Variante completa: todas las secciones opcionales (con textos [COMPLETAR], sin inventar cifras de un cliente real)
+  // Variante completa (galería, reels y antes/después). El testimonio y los resultados están ocultos
+  // hasta tener datos reales del cliente: ver los bloques comentados más abajo.
   {
     slug: "tabla-y-birra",
     cliente: "Tabla y Birra",
@@ -70,57 +71,57 @@ const todosLosCasos: Caso[] = [
     rubro: "Alquiler de mobiliario",
     servicios: ["contenido", "catalogos"],
     ciudad: "Mercedes",
-    anio: 2025, // [COMPLETAR]
+    anio: 2025, // [COMPLETAR] confirmar el año real del trabajo
+    // [COMPLETAR] sumar los detalles reales del trabajo al resumen
     resumen:
-      "Tabla y Birra necesitaba mostrar su mobiliario como se ve en un evento real y facilitar que sus clientes elijan. Armamos un catálogo claro y una línea de contenido para redes pensada para eventos. [COMPLETAR: detalles del trabajo]",
-    portada: { src: img("tabla-y-birra-1"), alt: "[COMPLETAR] Mobiliario de Tabla y Birra" },
+      "Tabla y Birra necesitaba mostrar su mobiliario como se ve en un evento real y facilitar que sus clientes elijan. Armamos un catálogo claro y una línea de contenido para redes pensada para eventos.",
+    portada: { src: img("tabla-y-birra-1"), alt: "Filas de sillas blancas plegables armadas al aire libre para un evento" },
     galeria: [
-      { src: img("tabla-y-birra-1"), alt: "[COMPLETAR] Sillas blancas armadas para un evento", formato: "horizontal" },
-      { src: img("tabla-y-birra-4"), alt: "[COMPLETAR] Mesa decorada con flores", formato: "vertical" },
-      { src: img("tabla-y-birra-2"), alt: "[COMPLETAR] Mesa de buffet al aire libre", formato: "cuadrada" },
-      { src: img("tabla-y-birra-3"), alt: "[COMPLETAR] Salón con mesas y sillas dispuestas", formato: "horizontal" },
+      { src: img("tabla-y-birra-1"), alt: "Filas de sillas blancas plegables armadas al aire libre para un evento", formato: "horizontal" },
+      { src: img("tabla-y-birra-4"), alt: "Mujer apoyada en una mesa con mantel rosa junto a un jarrón con flores", formato: "vertical" },
+      { src: img("tabla-y-birra-2"), alt: "Mesa de buffet al aire libre con tulipanes, copas y botellas", formato: "cuadrada" },
+      { src: img("tabla-y-birra-3"), alt: "Salón con mesas largas, sillas de madera y servilletas naranjas", formato: "horizontal" },
     ],
-    reels: [reel(1, "[COMPLETAR] Reel de Tabla y Birra"), reel(2, "[COMPLETAR] Reel de un evento con mobiliario")],
+    reels: [
+      reel(1, "Taza de café y galletitas sobre una cama con mantas, una vela y hojas de otoño"),
+      reel(2, "Ensalada con salmón y un tenedor en un bol de madera"),
+    ],
     antesDespues: {
       antes: img("tabla-y-birra-antes"),
       despues: img("tabla-y-birra-1"),
-      alt: "[COMPLETAR] Foto del mobiliario antes y después de la producción",
+      alt: "Sillas blancas plegables: a la izquierda la foto sin trabajar y a la derecha con color y contraste",
     },
-    testimonio: {
-      texto: "[COMPLETAR] Testimonio del cliente sobre cómo fue trabajar con Luprey.",
-      autor: "[COMPLETAR]",
-      cargo: "Tabla y Birra",
-    },
-    resultados: [
-      { valor: "+00%", label: "[COMPLETAR] resultado 1" },
-      { valor: "+00", label: "[COMPLETAR] resultado 2" },
-      { valor: "0x", label: "[COMPLETAR] resultado 3" },
-    ],
+    // Ocultos hasta tener datos reales (descomentar para mostrarlos):
+    // testimonio: { texto: "...", autor: "...", cargo: "Tabla y Birra" },
+    // resultados: [
+    //   { valor: "...", label: "..." },
+    //   { valor: "...", label: "..." },
+    //   { valor: "...", label: "..." },
+    // ],
     destacado: true,
   },
-  // Galería + reels + testimonio
+  // Galería + reels. El testimonio está oculto hasta tener datos reales.
   {
     slug: "deleite",
     cliente: "Deleite",
     titulo: "Un día de contenido para llenar las redes de material propio",
-    rubro: "[COMPLETAR]",
+    rubro: "Gastronomía",
     servicios: ["fotografia", "contenido"],
-    ciudad: "[COMPLETAR]",
-    anio: 2025, // [COMPLETAR]
+    ciudad: "Mercedes", // [COMPLETAR] ciudad de ejemplo: confirmar
+    anio: 2025, // [COMPLETAR] año de ejemplo: confirmar
+    // [COMPLETAR] sumar los detalles reales del trabajo al resumen
     resumen:
-      "Deleite necesitaba material de calidad para sus redes sin pasar semanas produciendo. Hicimos un día de contenido en el local y entregamos fotos y videos listos para publicar. [COMPLETAR: detalles del trabajo]",
-    portada: { src: img("deleite-1"), alt: "[COMPLETAR] Interior de Deleite" },
+      "Deleite necesitaba material de calidad para sus redes sin pasar semanas produciendo. Hicimos un día de contenido en el local y entregamos fotos y videos listos para publicar.",
+    portada: { src: img("deleite-1"), alt: "Mostrador de una cafetería con pizarra de menú y máquinas de café" },
     galeria: [
-      { src: img("deleite-1"), alt: "[COMPLETAR] Mostrador y ambiente del local", formato: "horizontal" },
-      { src: img("deleite-4"), alt: "[COMPLETAR] Café con leche en preparación", formato: "vertical" },
-      { src: img("deleite-3"), alt: "[COMPLETAR] Café y pan dulce", formato: "cuadrada" },
-      { src: img("deleite-2"), alt: "[COMPLETAR] Productos de panadería", formato: "horizontal" },
+      { src: img("deleite-1"), alt: "Mostrador de una cafetería con pizarra de menú y máquinas de café", formato: "horizontal" },
+      { src: img("deleite-4"), alt: "Leche cayendo en una taza de café rodeada de granos", formato: "vertical" },
+      { src: img("deleite-3"), alt: "Taza de café y rebanada de pan dulce con pasas sobre una bandeja", formato: "cuadrada" },
+      { src: img("deleite-2"), alt: "Medialunas recién horneadas en una canasta", formato: "horizontal" },
     ],
-    reels: [reel(3, "[COMPLETAR] Reel del día de contenido en Deleite")],
-    testimonio: {
-      texto: "[COMPLETAR] Testimonio del cliente sobre el día de contenido.",
-      autor: "[COMPLETAR]",
-    },
+    reels: [reel(3, "Muffins con chips recién horneados sobre una rejilla")],
+    // Oculto hasta tener datos reales (descomentar para mostrarlo):
+    // testimonio: { texto: "...", autor: "..." },
     destacado: true,
   },
 
@@ -129,19 +130,19 @@ const todosLosCasos: Caso[] = [
   {
     slug: "tabla-y-birra-demo-2",
     cliente: "Tabla y Birra",
-    titulo: "Eventos de verano: mesas y sillas en escenarios reales",
+    titulo: "Eventos de verano, mesas y sillas en escenarios reales",
     rubro: "Alquiler de mobiliario",
     servicios: ["fotografia", "contenido"],
     ciudad: "Mercedes",
     anio: 2024,
     resumen:
       "Para la temporada alta necesitaban fotos del mobiliario en eventos reales. Hicimos una producción en tres escenarios y armamos piezas para redes con el calendario de disponibilidad.",
-    portada: { src: img("tabla-y-birra-2"), alt: "[DEMO] Mesa de evento al aire libre" },
+    portada: { src: img("tabla-y-birra-2"), alt: "Mesa de buffet al aire libre con tulipanes, copas y botellas" },
     galeria: [
-      { src: img("tabla-y-birra-2"), alt: "[DEMO] Mesa de evento al aire libre", formato: "horizontal" },
-      { src: img("tabla-y-birra-3"), alt: "[DEMO] Salón armado para un evento", formato: "cuadrada" },
-      { src: img("tabla-y-birra-4"), alt: "[DEMO] Mesa decorada con flores", formato: "vertical" },
-      { src: img("tabla-y-birra-1"), alt: "[DEMO] Sillas dispuestas en un jardín", formato: "horizontal" },
+      { src: img("tabla-y-birra-2"), alt: "Mesa de buffet al aire libre con tulipanes, copas y botellas", formato: "horizontal" },
+      { src: img("tabla-y-birra-3"), alt: "Salón con mesas largas, sillas de madera y servilletas naranjas", formato: "cuadrada" },
+      { src: img("tabla-y-birra-4"), alt: "Mujer apoyada en una mesa con mantel rosa junto a un jarrón con flores", formato: "vertical" },
+      { src: img("tabla-y-birra-1"), alt: "Filas de sillas blancas plegables armadas al aire libre", formato: "horizontal" },
     ],
     destacado: true,
     demo: true,
@@ -157,16 +158,16 @@ const todosLosCasos: Caso[] = [
     anio: 2024,
     resumen:
       "Iban a lanzar una carta nueva y sus piezas de redes cambiaban de estilo cada semana. Ordenamos la imagen y produjimos el material para anunciarla.",
-    portada: { src: img("deleite-2"), alt: "[DEMO] Productos de panadería de la carta nueva" },
+    portada: { src: img("deleite-2"), alt: "Medialunas recién horneadas en una canasta" },
     galeria: [
-      { src: img("deleite-2"), alt: "[DEMO] Productos de la carta nueva", formato: "horizontal" },
-      { src: img("deleite-1"), alt: "[DEMO] Mostrador y ambiente del local", formato: "horizontal" },
-      { src: img("deleite-3"), alt: "[DEMO] Café con acompañamiento", formato: "cuadrada" },
+      { src: img("deleite-2"), alt: "Medialunas recién horneadas en una canasta", formato: "horizontal" },
+      { src: img("deleite-1"), alt: "Mostrador de una cafetería con pizarra de menú y máquinas de café", formato: "horizontal" },
+      { src: img("deleite-3"), alt: "Taza de café y rebanada de pan dulce con pasas sobre una bandeja", formato: "cuadrada" },
     ],
     antesDespues: {
       antes: img("deleite-antes"),
       despues: img("deleite-2"),
-      alt: "[DEMO] Foto de producto antes y después de la producción",
+      alt: "Medialunas en una canasta: a la izquierda la foto apagada y a la derecha con color y luz trabajados",
     },
     destacado: true,
     demo: true,
@@ -182,16 +183,16 @@ const todosLosCasos: Caso[] = [
     anio: 2025,
     resumen:
       "Quienes organizaban celebraciones no encontraban fácil qué se podía alquilar. Armamos paquetes claros en un catálogo y un sitio rápido que lleva directo al WhatsApp.",
-    portada: { src: img("tabla-y-birra-3"), alt: "[DEMO] Mesas decoradas para una celebración" },
+    portada: { src: img("tabla-y-birra-3"), alt: "Salón con mesas largas, sillas de madera y servilletas naranjas" },
     galeria: [
-      { src: img("tabla-y-birra-3"), alt: "[DEMO] Mesas decoradas para una celebración", formato: "horizontal" },
-      { src: img("tabla-y-birra-1"), alt: "[DEMO] Filas de sillas blancas", formato: "cuadrada" },
-      { src: img("tabla-y-birra-2"), alt: "[DEMO] Mesa de buffet al aire libre", formato: "cuadrada" },
+      { src: img("tabla-y-birra-3"), alt: "Salón con mesas largas, sillas de madera y servilletas naranjas", formato: "horizontal" },
+      { src: img("tabla-y-birra-1"), alt: "Filas de sillas blancas plegables armadas al aire libre", formato: "cuadrada" },
+      { src: img("tabla-y-birra-2"), alt: "Mesa de buffet al aire libre con tulipanes, copas y botellas", formato: "cuadrada" },
     ],
     testimonio: {
       texto: "Ahora las consultas llegan con todo claro: qué quieren, para cuántos y para cuándo.",
-      autor: "Cliente de ejemplo",
-      cargo: "[DEMO]",
+      autor: "Una clienta",
+      cargo: "Organizó un cumpleaños de quince",
     },
     resultados: [
       { valor: "+40%", label: "consultas por WhatsApp" },
@@ -205,23 +206,23 @@ const todosLosCasos: Caso[] = [
   {
     slug: "deleite-demo-3",
     cliente: "Deleite",
-    titulo: "Redes con calendario: la cafetería de cada temporada",
+    titulo: "Redes con calendario para la cafetería de cada temporada",
     rubro: "Gastronomía",
     servicios: ["redes-sociales", "contenido"],
     ciudad: "Fray Bentos",
     anio: 2025,
     resumen:
       "Publicaban cuando podían y sin una línea clara. Armamos una estrategia simple con calendario mensual centrado en los productos de cada estación.",
-    portada: { src: img("deleite-3"), alt: "[DEMO] Café y pan dulce sobre una mesa" },
+    portada: { src: img("deleite-3"), alt: "Taza de café y rebanada de pan dulce con pasas sobre una bandeja" },
     galeria: [
-      { src: img("deleite-3"), alt: "[DEMO] Café y pan dulce sobre una mesa", formato: "cuadrada" },
-      { src: img("deleite-4"), alt: "[DEMO] Café con leche en preparación", formato: "vertical" },
-      { src: img("deleite-1"), alt: "[DEMO] Interior de la cafetería", formato: "horizontal" },
+      { src: img("deleite-3"), alt: "Taza de café y rebanada de pan dulce con pasas sobre una bandeja", formato: "cuadrada" },
+      { src: img("deleite-4"), alt: "Leche cayendo en una taza de café rodeada de granos", formato: "vertical" },
+      { src: img("deleite-1"), alt: "Mostrador de una cafetería con pizarra de menú y máquinas de café", formato: "horizontal" },
     ],
     testimonio: {
       texto: "Pasamos de subir cosas sueltas a tener un plan. Se nota en cómo nos escribe la gente.",
-      autor: "Cliente de ejemplo",
-      cargo: "[DEMO]",
+      autor: "Una clienta",
+      cargo: "Cafetería de barrio",
     },
     destacado: false,
     demo: true,
