@@ -166,7 +166,12 @@ export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">
 
       {/* g. Siguiente trabajo */}
       {siguiente && (
-        <section data-tone="carbon" aria-label="Siguiente trabajo" className="relative isolate overflow-hidden">
+        <section
+          data-tone="carbon"
+          data-ocultar-flotantes
+          aria-label="Siguiente trabajo"
+          className="relative isolate overflow-hidden"
+        >
           <Link href={`/trabajos/${siguiente.slug}`} className="group block">
             <div aria-hidden="true" className="absolute inset-0 -z-10">
               <Image

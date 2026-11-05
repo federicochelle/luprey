@@ -15,39 +15,52 @@ const pestana =
 
 /**
  * Pestañas flotantes pegadas al borde derecho: Instagram arriba y WhatsApp abajo (más ancha, sobresale más).
- * En mobile se ocultan mientras hay un formulario a la vista, para no tapar el botón de enviar.
+ * Se ocultan mientras haya a la vista:
+ * - un formulario (solo debajo de lg, donde ocupa todo el ancho): para no tapar "Enviar";
+ * - un bloque marcado con data-ocultar-flotantes (por ejemplo "Siguiente trabajo"): en cualquier tamaño.
  * Los diálogos (modal de WhatsApp, lightbox) usan la capa superior del navegador: siempre quedan por encima.
  */
 export function WhatsAppFloat() {
   const { open } = useWhatsAppPicker();
   const pathname = usePathname();
   const [sobreFormulario, setSobreFormulario] = useState(false);
+  const [sobreBloque, setSobreBloque] = useState(false);
 
   useEffect(() => {
-    const visibles = new Set<Element>();
-    const observer = new IntersectionObserver((entradas) => {
-      for (const e of entradas) {
-        if (e.isIntersecting) visibles.add(e.target);
-        else visibles.delete(e.target);
-      }
-      setSobreFormulario(visibles.size > 0);
-    });
-    document.querySelectorAll("form").forEach((f) => observer.observe(f));
+    const observar = (selector: string, avisar: (visible: boolean) => void) => {
+      const visibles = new Set<Element>();
+      const observer = new IntersectionObserver((entradas) => {
+        for (const e of entradas) {
+          if (e.isIntersecting) visibles.add(e.target);
+          else visibles.delete(e.target);
+        }
+        avisar(visibles.size > 0);
+      });
+      document.querySelectorAll(selector).forEach((el) => observer.observe(el));
+      return observer;
+    };
+    const formularios = observar("form", setSobreFormulario);
+    const bloques = observar("[data-ocultar-flotantes]", setSobreBloque);
     return () => {
-      observer.disconnect();
-      setSobreFormulario(false); // al cambiar de página se vuelve a mostrar
+      formularios.disconnect();
+      bloques.disconnect();
+      // al cambiar de página se vuelven a mostrar
+      setSobreFormulario(false);
+      setSobreBloque(false);
     };
   }, [pathname]);
 
   return (
     <div
       data-oculto={sobreFormulario}
+      data-oculto-siempre={sobreBloque}
       className={cn(
         // z-40: por debajo del header (y del menú móvil abierto); los diálogos van en la capa superior del navegador
         "fixed right-0 z-40 flex flex-col items-end gap-3 transition-[opacity,translate] duration-200",
         "bottom-5 sm:bottom-8", // misma altura que tenían los botones flotantes
         // Debajo de lg el formulario ocupa todo el ancho: mientras está a la vista se ocultan para no tapar "Enviar"
         "max-lg:data-[oculto=true]:pointer-events-none max-lg:data-[oculto=true]:translate-y-3 max-lg:data-[oculto=true]:opacity-0",
+        "data-[oculto-siempre=true]:pointer-events-none data-[oculto-siempre=true]:translate-y-3 data-[oculto-siempre=true]:opacity-0",
       )}
     >
       <a
