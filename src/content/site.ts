@@ -12,7 +12,7 @@ export type Contacto = {
 
 /**
  * Entorno del sitio. Solo "production" es indexable: en cualquier otro valor (o sin definir) el sitio se trata
- * como preview: robots.txt lo bloquea, las páginas llevan noindex y se muestra la franja de versión preliminar.
+ * como preview: robots.txt lo bloquea y las páginas llevan noindex, nofollow.
  */
 export const esProduccion = process.env.NEXT_PUBLIC_SITE_ENV === "production";
 

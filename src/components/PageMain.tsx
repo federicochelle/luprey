@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
-import { esProduccion, tieneHeaderTransparente } from "@/content/site";
+import { tieneHeaderTransparente } from "@/content/site";
 import { cn } from "@/lib/cn";
 
 /**
@@ -12,7 +12,7 @@ import { cn } from "@/lib/cn";
 export function PageMain({ children }: { children: ReactNode }) {
   const transparente = tieneHeaderTransparente(usePathname());
   return (
-    <main id="contenido" className={cn("flex-1", !transparente && (esProduccion ? "pt-16 sm:pt-20" : "pt-24 sm:pt-28"))}>
+    <main id="contenido" className={cn("flex-1", !transparente && "pt-16 sm:pt-20")}>
       {children}
     </main>
   );

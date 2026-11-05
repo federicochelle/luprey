@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { PageMain } from "@/components/PageMain";
-import { PreviewBanner } from "@/components/PreviewBanner";
 import { WhatsAppPicker } from "@/components/WhatsAppPicker";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -43,7 +42,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Saltar al contenido
           </a>
-          <PreviewBanner />
           <Header />
           <PageMain>{children}</PageMain>
           <Footer />

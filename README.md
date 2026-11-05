@@ -21,7 +21,7 @@ Copiá `.env.example` a `.env.local` y completalo.
 | Variable | Para qué sirve |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | URL pública del sitio. La usan los canonicals, el sitemap y Open Graph. |
-| `NEXT_PUBLIC_SITE_ENV` | `preview` (por defecto) o `production`. Si no es `production`: `robots.txt` bloquea todo, las páginas llevan `noindex, nofollow` y se muestra la franja "Versión preliminar". |
+| `NEXT_PUBLIC_SITE_ENV` | `preview` (por defecto) o `production`. Si no es `production`: `robots.txt` bloquea todo y las páginas llevan `noindex, nofollow`. |
 | `PIXABAY_API_KEY` | Solo para los scripts que descargan imágenes y videos. Nunca llega al sitio. |
 
 ## Cómo cargar un trabajo nuevo
