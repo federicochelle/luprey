@@ -61,7 +61,7 @@ export type Caso = {
  * PONER EN false ANTES DE PUBLICAR. Con false desaparecen de /trabajos, del sitemap
  * y sus páginas /trabajos/<slug> dejan de existir (404).
  */
-export const SHOW_DEMO_CASES = true;
+export const SHOW_DEMO_CASES = false;
 
 const img = (nombre: string) => `/images/casos/${nombre}.jpg`;
 const reel = (n: number, alt: string): ElementoGaleria => ({
