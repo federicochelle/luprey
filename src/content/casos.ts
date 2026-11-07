@@ -80,7 +80,7 @@ const todosLosCasos: Caso[] = [
     cliente: "Tabla y Birra",
     titulo: "Un catálogo y contenido que muestran el mobiliario en acción",
     rubro: "Alquiler de mobiliario",
-    servicios: ["contenido", "catalogos"],
+    servicios: ["contenido", "diseno-grafico"],
     ciudad: "Mercedes",
     anio: 2025, // [COMPLETAR] confirmar el año real del trabajo
     // [COMPLETAR] sumar los detalles reales del trabajo al resumen
@@ -184,7 +184,7 @@ const todosLosCasos: Caso[] = [
     cliente: "Tabla y Birra",
     titulo: "Un sitio y un catálogo para organizar bodas y cumpleaños",
     rubro: "Alquiler de mobiliario",
-    servicios: ["catalogos", "desarrollo-web"],
+    servicios: ["diseno-grafico", "desarrollo-web"],
     ciudad: "Mercedes",
     anio: 2025,
     resumen:

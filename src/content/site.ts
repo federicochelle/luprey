@@ -16,11 +16,13 @@ export type Contacto = {
  */
 export const esProduccion = process.env.NEXT_PUBLIC_SITE_ENV === "production";
 
+import { SHOW_TRABAJOS } from "@/lib/config";
+
 export const site = {
   nombre: "Luprey",
   tagline: "Estrategia + contenido + cercanía.",
   descripcion:
-    "Luprey es una agencia de marketing con base en Mercedes y Fray Bentos, Uruguay. Construimos marcas que comunican mejor: estrategia, contenido y cercanía.",
+    "Luprey es una agencia de marketing. Construimos marcas que comunican mejor: estrategia, contenido y cercanía.",
   // Dominio final: definilo en NEXT_PUBLIC_SITE_URL (ej. https://tudominio.com.uy)
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
@@ -57,8 +59,8 @@ export const site = {
 
   menu: [
     { label: "Servicios", href: "/servicios" },
-    { label: "Trabajos", href: "/trabajos" },
-    { label: "Nosotros", href: "/nosotros" },
+    ...(SHOW_TRABAJOS ? [{ label: "Trabajos", href: "/trabajos" }] : []),
+    { label: "Nosotras", href: "/nosotras" },
     { label: "Contacto", href: "/contacto" },
   ],
 };

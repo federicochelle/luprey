@@ -18,7 +18,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.nombre} | Agencia de marketing en Mercedes y Fray Bentos`,
+    default: `${site.nombre} | Agencia de marketing`,
     template: `%s | ${site.nombre}`,
   },
   description: site.descripcion,

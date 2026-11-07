@@ -14,10 +14,11 @@ import { getCasosDestacados } from "@/content/casos";
 import { servicios } from "@/content/servicios";
 import { home } from "@/content/home";
 import { site } from "@/content/site";
+import { SHOW_TRABAJOS } from "@/lib/config";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: `${site.nombre} | Agencia de marketing en Mercedes y Fray Bentos`,
+  title: `${site.nombre} | Agencia de marketing`,
   description: site.descripcion,
   path: "/",
   absoluteTitle: true,
@@ -42,9 +43,11 @@ export default function Home() {
           <SectionHeading as="h1" id="hero-titulo" title={home.hero.titulo} intro={home.hero.subtitulo} />
           <div className="mt-10 flex flex-wrap gap-4">
             <WhatsAppButton>Hablemos por WhatsApp</WhatsAppButton>
-            <Button href="/trabajos" variant="outline">
-              Ver trabajos
-            </Button>
+            {SHOW_TRABAJOS && (
+              <Button href="/trabajos" variant="outline">
+                Ver trabajos
+              </Button>
+            )}
           </div>
         </Container>
       </section>
@@ -64,27 +67,28 @@ export default function Home() {
         </ul>
       </Section>
 
+      {/* Clientes: la tira de logos se muestra siempre; las tarjetas de trabajos solo con SHOW_TRABAJOS */}
       <Section tone="crema" labelledBy="casos-titulo">
-        <SectionHeading
-          id="casos-titulo"
-          title={home.casos.titulo}
-          intro={home.casos.bajada}
-        />
+        <SectionHeading id="casos-titulo" title={home.casos.titulo} intro={home.casos.bajada} />
         <div className="mt-12">
           <ClientLogos />
         </div>
-        <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {destacados.map((caso) => (
-            <li key={caso.slug}>
-              <CaseCard caso={caso} />
-            </li>
-          ))}
-        </ul>
-        <div className="mt-12">
-          <Button href="/trabajos" variant="outline">
-            Ver todos los trabajos
-          </Button>
-        </div>
+        {SHOW_TRABAJOS && (
+          <>
+            <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {destacados.map((caso) => (
+                <li key={caso.slug}>
+                  <CaseCard caso={caso} />
+                </li>
+              ))}
+            </ul>
+            <div className="mt-12">
+              <Button href="/trabajos" variant="outline">
+                Ver todos los trabajos
+              </Button>
+            </div>
+          </>
+        )}
       </Section>
 
       <Section tone="carbon" labelledBy="proceso-titulo" className="grain">

@@ -29,7 +29,7 @@ const consultasServicios = {
   "diseno-grafico": "graphic designer",
   contenido: "taking photo food smartphone",
   fotografia: "photographer studio",
-  catalogos: "flat lay products",
+  "eventos-empresariales": "corporate event conference",
   "desarrollo-web": "web developer laptop",
 };
 const consultasCasos = {
@@ -41,12 +41,12 @@ const tareas = [
   { file: "hero/hero.jpg", query: "golden field sunset" },
   { file: "hero/hero-2.jpg", query: "photographer working" },
   { file: "hero/hero-3.jpg", query: "creative workspace" },
-  // Página Nosotros (una por bloque)
+  // Página Nosotras (una por bloque)
   { file: "nosotros/que-es.jpg", query: "marketing team brainstorming" },
-  { file: "nosotros/pensamos-1.jpg", query: "strategy planning notebook" },
-  { file: "nosotros/pensamos-2.jpg", query: "typing laptop content writing" },
-  { file: "nosotros/pensamos-3.jpg", query: "small business shop owner" },
-  { file: "nosotros/pensamos-4.jpg", query: "friendly conversation coffee" },
+  { file: "nosotros/pensamos-1.jpg", query: "marketing strategy notebook desk" },
+  { file: "nosotros/pensamos-2.jpg", query: "social media icons smartphone" },
+  { file: "nosotros/pensamos-3.jpg", query: "analytics dashboard laptop" },
+  { file: "nosotros/pensamos-4.jpg", query: "megaphone announcement" },
 ];
 for (const s of servicios) {
   const query = consultasServicios[s.slug];
@@ -65,8 +65,13 @@ for (const c of casos) {
 // Fotos fijadas por ID de Pixabay (la ruta destino -> id). Tienen prioridad sobre la búsqueda.
 // El ID es el número final de la URL de la foto: pixabay.com/photos/...-1234567/
 const idsFijos = {
+  // Página Nosotras: solo objetos de marketing, sin personas
+  "nosotros/pensamos-1.jpg": 791939,
+  "nosotros/pensamos-2.jpg": 2785670,
+  "nosotros/pensamos-3.jpg": 767776,
+  "nosotros/pensamos-4.jpg": 3408791,
   // "hero/hero.jpg": 1234567,
-  // "servicios/catalogos.jpg": 1234567,
+  // "servicios/eventos-empresariales.jpg": 1234567,
   // "servicios/redes-sociales.jpg": 1234567,
 };
 

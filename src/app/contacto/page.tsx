@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: "Contacto",
-  description: "Contanos qué necesitás y escribinos por WhatsApp desde Mercedes o Fray Bentos.",
+  description: "Contanos qué necesitás y escribinos por WhatsApp.",
   path: "/contacto",
 });
 

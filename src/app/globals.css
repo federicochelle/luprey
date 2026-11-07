@@ -65,50 +65,6 @@
   }
 }
 
-/* Tira de clientes (ClientLogos): marquee lento */
-.marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 45s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-list {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 3rem;
-  padding-right: 3rem; /* mismo valor que el gap, para que el loop sea continuo */
-  list-style: none;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee {
-    overflow-x: auto;
-    mask-image: none;
-  }
-  .marquee-track {
-    animation: none;
-  }
-  .marquee-dup {
-    display: none;
-  }
-}
-
 /* Textura de grano muy sutil (ruido SVG inline, sin imágenes externas). Uso: className="grain" en un <Section>. */
 .grain {
   position: relative;

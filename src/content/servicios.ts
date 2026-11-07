@@ -1,4 +1,4 @@
-import { BookOpen, Camera, Clapperboard, MonitorSmartphone, PenTool, Share2, type LucideIcon } from "lucide-react";
+import { CalendarDays, Camera, Clapperboard, MonitorSmartphone, PenTool, Share2, type LucideIcon } from "lucide-react";
 
 export type Faq = { pregunta: string; respuesta: string };
 
@@ -58,12 +58,13 @@ export const servicios: Servicio[] = [
     descripcionCorta: "Piezas que se ven bien y dicen lo que tu marca quiere decir.",
     // [REVISAR] texto del hero, borrador a confirmar con Luprey
     descripcionLarga:
-      "Diseñamos las piezas que tu marca necesita para verse igual de bien en redes, en la vidriera y en la mano de tu cliente. Si ya tenés logo pero cada cosa sale distinta, ordenamos tu imagen para que se reconozca de una.",
+      "Diseñamos las piezas que tu marca necesita para verse igual de bien en redes, en la vidriera y en la mano de tu cliente, incluidos catálogos digitales o imprimibles. Si ya tenés logo pero cada cosa sale distinta, ordenamos tu imagen para que se reconozca de una.",
     incluye: [
       "Piezas para redes (posteos, historias, portadas)",
       "Flyers, folletos y cartelería",
       "Adaptaciones de tu identidad visual",
       "Plantillas editables para que mantengas el estilo",
+      "Catálogos (digitales o imprimibles)",
       "Archivos listos para imprimir o publicar",
     ],
     faqs: [
@@ -157,35 +158,36 @@ export const servicios: Servicio[] = [
     ],
   },
   {
-    slug: "catalogos",
-    icon: BookOpen,
-    image: "/images/servicios/catalogos.jpg",
-    titulo: "Catálogos",
-    descripcionCorta: "Catálogos claros y bien diseñados para mostrar y vender tus productos.",
-    // [REVISAR] texto del hero, borrador a confirmar con Luprey
+    slug: "eventos-empresariales",
+    icon: CalendarDays,
+    // Provisoria: copia de catalogos.jpg. TODO: reemplazar por una foto de eventos
+    image: "/images/servicios/eventos-empresariales.jpg",
+    titulo: "Eventos empresariales",
+    descripcionCorta: "Organización de lanzamientos, presentaciones y encuentros corporativos, de principio a fin.",
+    // TODO: revisar con clientas (descripción, incluye y FAQs)
     descripcionLarga:
-      "Armamos catálogos, digitales o impresos, que ordenan tu oferta y le hacen fácil la elección a tu cliente. Es para quienes tienen muchos productos o venden por WhatsApp y hoy mandan fotos sueltas. Ganás una carta de presentación prolija que se comparte en un toque y deja claro qué ofrecés.",
+      "Organizamos eventos empresariales de principio a fin: lanzamientos, presentaciones, aniversarios y encuentros corporativos. Nos ocupamos de la planificación, la comunicación y cada detalle, para que tu marca se luzca y vos solo tengas que disfrutar.",
     incluye: [
-      "Relevamiento y orden de tus productos",
-      "Fotografía de los productos",
-      "Diseño del catálogo (digital y/o imprimible)",
-      "Textos descriptivos claros",
-      "Versión lista para compartir por WhatsApp y redes",
+      "Planificación y cronograma del evento",
+      "Búsqueda y coordinación de espacio y proveedores",
+      "Diseño de invitaciones y piezas gráficas",
+      "Comunicación y difusión previa en redes",
+      "Coordinación y producción el día del evento",
     ],
     faqs: [
       {
-        pregunta: "¿Se puede actualizar cuando cambian los productos?",
-        // [COMPLETAR] definir si se ofrecen actualizaciones y cómo se coordinan
+        pregunta: "¿Qué tipos de eventos organizan?",
         respuesta:
-          "Sí, podemos actualizarlo cuando cambien tus productos o precios. Lo coordinamos con vos según cómo vayas a usar el catálogo.",
+          "Lanzamientos, presentaciones, aniversarios y encuentros corporativos. Si tenés otra idea, la charlamos.",
       },
       {
-        pregunta: "¿Es digital o impreso?",
-        respuesta: "Puede ser ambos. Lo pensamos según cómo lo vayas a usar.",
+        pregunta: "¿Se ocupan de todo o solo de una parte?",
+        respuesta:
+          "Podemos hacernos cargo de todo el evento o de las partes que necesites. Lo definimos juntas al empezar.",
       },
       {
-        pregunta: "¿Incluye las fotos?",
-        respuesta: "Podemos usar tus fotos o hacerlas nosotras con el servicio de fotografía.",
+        pregunta: "¿Con cuánta anticipación tengo que contactarlas?",
+        respuesta: "Cuanto antes, mejor. Según el tipo de evento, lo ideal es escribirnos con unas semanas de margen.",
       },
     ],
   },

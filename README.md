@@ -34,7 +34,7 @@ Copiá `.env.example` a `.env.local` y completalo.
    `testimonio`, `resultados`. Cada sección de la página solo aparece si el caso tiene ese dato.
 
 El caso aparece solo en `/trabajos`, en el sitemap, en `/trabajos/<slug>` y enlazado desde sus servicios.
-Los servicios, los textos de la home y los de Nosotros están en `src/content/` (`servicios.ts`, `home.ts`, `nosotros.ts`).
+Los servicios, los textos de la home y los de Nosotras están en `src/content/` (`servicios.ts`, `home.ts`, `nosotros.ts`).
 
 ## Flags
 
@@ -48,6 +48,7 @@ Los servicios, los textos de la home y los de Nosotros están en `src/content/` 
 - `npm run fetch-images`: descarga fotos de Pixabay (requiere `PIXABAY_API_KEY`).
 - `npm run fetch-videos`: descarga videos verticales de Pixabay para los reels.
 - `npm run generate-avatars`: regenera los avatares del equipo.
+- `npm run generate-favicons`: regenera el favicon "Ly." (icon.svg, apple-icon.png y favicon.ico en `src/app/`).
 - `npm run optimize-images`: comprime las imágenes de `public/images/` (máx. 1920 px de ancho, calidad 80 y
   menos de 300 KB cada una). Correrlo cada vez que se sumen fotos: el sitio usa `images.unoptimized`, así que las
   imágenes se sirven tal cual están.

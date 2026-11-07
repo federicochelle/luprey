@@ -12,6 +12,7 @@ import { SplitSection } from "@/components/SplitSection";
 import { casos, getCasosDestacados, getCasosPorServicio } from "@/content/casos";
 import { getServicio, servicios } from "@/content/servicios";
 import { home } from "@/content/home";
+import { SHOW_TRABAJOS } from "@/lib/config";
 import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -65,7 +66,7 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
       </Section>
 
       {/* Un trabajo nuestro: el caso relacionado (o uno destacado si no hay) */}
-      {caso && (
+      {SHOW_TRABAJOS && caso && (
         <SplitSection
           reverse
           variant="crema"
@@ -84,7 +85,7 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
         </SplitSection>
       )}
 
-      <Section tone="carbon" labelledBy="faq-titulo">
+      <Section tone={SHOW_TRABAJOS ? "carbon" : "crema"} labelledBy="faq-titulo">
         <SectionHeading id="faq-titulo" title="Preguntas frecuentes" />
         <Faq items={servicio.faqs} />
       </Section>
@@ -93,7 +94,7 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
         title={home.ctaGeneral.titulo}
         subtitle={home.ctaGeneral.bajada}
         image={servicio.image}
-        variant="crema"
+        variant={SHOW_TRABAJOS ? "crema" : "carbon"}
         defaultService={servicio.slug}
       />
     </>

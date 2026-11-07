@@ -1,4 +1,4 @@
-// Contenido de /nosotros. Lo marcado [REVISAR] es un borrador a confirmar.
+// Contenido de /nosotras. Lo marcado [REVISAR] es un borrador a confirmar.
 export const nosotros = {
   // Primera sección de la página: lleva el h1
   // [REVISAR] el texto de "Somos Luprey" es un borrador: confirmarlo con Luprey
@@ -31,12 +31,14 @@ export const nosotros = {
     },
   ],
   equipo: {
-    titulo: "Las caras detrás de Luprey",
-    // `contacto` es el id en site.contactos (para el botón de WhatsApp directo)
-    integrantes: [
-      { nombre: "Sofía Pérez", ciudad: "Mercedes", contacto: "mercedes", imagen: "/images/equipo/sofia-perez.svg" },
-      { nombre: "Sofía Giurgi", ciudad: "Fray Bentos", contacto: "fray-bentos", imagen: "/images/equipo/sofia-giurgi.svg" },
+    titulo: "Detrás de Luprey, estamos nosotras.",
+    imagen: "/images/nosotros/sofias-juntas.webp",
+    alt: "Sofía Giurgi y Sofía Pérez, fundadoras de Luprey",
+    parrafos: [
+      "Somos Sofía Giurgi y Sofía Pérez. Hace más de seis años que compartimos ideas, proyectos y desafíos, acompañando a marcas, empresas y profesionales en el camino de comunicar lo que hacen. Nos complementamos, pensamos juntas y disfrutamos transformar ideas en proyectos reales.",
+      "Creemos que detrás de cada marca hay personas, historias y objetivos diferentes. Por eso nos gusta conocer, escuchar, involucrarnos y trabajar de cerca con cada cliente. No creemos en las fórmulas mágicas ni en hacer las cosas porque sí: creemos en el trabajo en equipo, en la confianza y en construir relaciones que nos permitan crecer juntos.",
     ],
+    cierre: "Somos dos Sofías, muchas ideas y las mismas ganas de hacer que cada proyecto llegue más lejos.",
   },
   cierre: {
     titulo: "No es solo lo que hacemos. Es cómo lo hacemos.",

@@ -128,36 +128,36 @@
     "tags": "board, chalk, idea, concept, creative, think, brainstorming, solution, lightbulb, startup, feedback, study, training, goal, blackboard, analysis, problem, to learn, business, job, work, marketing, brainstorming, brainstorming, brainstorming, brainstorming, startup, startup, feedback, feedback, feedback, feedback, feedback, blackboard, marketing, marketing, marketing, marketing"
   },
   "nosotros/pensamos-1.jpg": {
-    "query": "strategy planning notebook",
-    "autor": "StartupStockPhotos",
-    "autorUrl": "https://pixabay.com/users/StartupStockPhotos-690514/",
-    "url": "https://pixabay.com/photos/office-startup-business-home-office-594132/",
-    "id": 594132,
-    "tags": "office, startup, business, home office, businessman, notebook, laptop, computer, company, people, marketing, planning, strategy, project, creative, technology, start-up, organization, development, commerce, working, desk, macbook, writing, pen, office, office, office, business, business, business, business, business, laptop, computer, computer, marketing, marketing, working, writing, writing, writing, writing"
+    "query": "id fijo 791939",
+    "autor": "kaboompics",
+    "autorUrl": "https://pixabay.com/users/kaboompics-1013994/",
+    "url": "https://pixabay.com/photos/new-year-background-organizer-791939/",
+    "id": 791939,
+    "tags": "new year background, organizer, calendar, schedule, appointments, diary, notes, planner, still life, notebook, notepad, desk, open"
   },
   "nosotros/pensamos-2.jpg": {
-    "query": "typing laptop content writing",
-    "autor": "expresswriters",
-    "autorUrl": "https://pixabay.com/users/expresswriters-11995773/",
-    "url": "https://pixabay.com/photos/influencer-writing-girl-woman-4081842/",
-    "id": 4081842,
-    "tags": "influencer, writing, girl, woman, typing, on computer, content marketing, typing on floor, written, words, handwriting, brown computer, brown laptop, brown marketing, brown writing, influencer, influencer, influencer, influencer, writing, writing, writing, writing, writing, typing, content marketing"
+    "query": "id fijo 2785670",
+    "autor": "Minakel2003",
+    "autorUrl": "https://pixabay.com/users/Minakel2003-6307417/",
+    "url": "https://pixabay.com/photos/smartphone-instagram-phone-2785670/",
+    "id": 2785670,
+    "tags": "smartphone, instagram, phone"
   },
   "nosotros/pensamos-3.jpg": {
-    "query": "small business shop owner",
-    "autor": "Tumisu",
-    "autorUrl": "https://pixabay.com/users/Tumisu-148124/",
-    "url": "https://pixabay.com/photos/woman-entrepreneur-owner-business-5467838/",
-    "id": 5467838,
-    "tags": "woman, entrepreneur, owner, business, shop, store, clothing, manager, saleswoman, retail, sales, small business, retail, small business, small business, small business, small business, small business"
+    "query": "id fijo 767776",
+    "autor": "Lalmch",
+    "autorUrl": "https://pixabay.com/users/Lalmch-1026205/",
+    "url": "https://pixabay.com/photos/computer-summary-chart-business-767776/",
+    "id": 767776,
+    "tags": "computer, summary, chart, business, seo, presentation, business presentation, screen, laptop screen, growth, notebook, laptop, digital notebook"
   },
   "nosotros/pensamos-4.jpg": {
-    "query": "friendly conversation coffee",
-    "autor": "pasja1000",
-    "autorUrl": "https://pixabay.com/users/pasja1000-6355831/",
-    "url": "https://pixabay.com/photos/city-here-and-now-he-and-she-caf%C3%A9-4483353/",
-    "id": 4483353,
-    "tags": "city, here and now, he and she, café, happy, coffee, young, hair, legs, hipster, youth, student, posing, together, conversation, expression, a smile, expresso, dress, hat, cup of coffee, bratislava, pane, blonde, conversation, conversation, conversation, conversation, conversation, bratislava"
+    "query": "id fijo 3408791",
+    "autor": "kreatikar",
+    "autorUrl": "https://pixabay.com/users/kreatikar-8562930/",
+    "url": "https://pixabay.com/illustrations/social-media-social-media-3408791/",
+    "id": 3408791,
+    "tags": "social, media, social media, social media marketing, social networking, business, communication, internet, technology, web, marketing, ideas"
   },
   "videos/casos/reel-1.mp4": {
     "tipo": "video",
@@ -245,5 +245,13 @@
         "f8dcc8"
       ]
     }
+  },
+  "servicios/eventos-empresariales.jpg": {
+    "query": "corporate event conference",
+    "autor": "bevilwooding",
+    "autorUrl": "https://pixabay.com/users/bevilwooding-2063772/",
+    "url": "https://pixabay.com/photos/table-table-setting-conference-1203381/",
+    "id": 1203381,
+    "tags": "table, table setting, conference, meeting, corporate meeting, business meeting, conference room, office meeting, business conference, event, pre-meeting, brown business, brown office, brown meeting, brown room, brown company, brown conference, brown event, table setting, conference, conference, conference, conference, conference, business meeting, conference room, conference room, conference room, conference room, conference room, office meeting"
   }
 }

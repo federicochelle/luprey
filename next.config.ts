@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { SHOW_DEMO_CASES } from "./src/content/casos";
-import { SHOW_DEMO_CLIENTS } from "./src/content/clientes";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -10,6 +9,14 @@ const nextConfig: NextConfig = {
   // Vercel agotó el límite gratis de Image Optimization: las imágenes se sirven tal cual están en public/.
   // Por eso hay que comprimirlas antes (npm run optimize-images: máx. 1920 px y 300 KB).
   images: { unoptimized: true },
+  // El servicio "Catálogos" se integró a "Diseño gráfico". Los redirects del config corren antes que el proxy.
+  async redirects() {
+    return [
+      { source: "/servicios/catalogos", destination: "/servicios/diseno-grafico", permanent: true },
+      // La página se llama "Nosotras": la ruta vieja redirige
+      { source: "/nosotros", destination: "/nosotras", permanent: true },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {
@@ -26,7 +33,6 @@ export default function config(phase: string): NextConfig {
     process.env.LUPREY_DEMO_WARNED = "1";
     const activos = [
       SHOW_DEMO_CASES && "SHOW_DEMO_CASES (src/content/casos.ts)",
-      SHOW_DEMO_CLIENTS && "SHOW_DEMO_CLIENTS (src/content/clientes.ts)",
     ].filter(Boolean);
     if (process.env.NEXT_PUBLIC_SITE_ENV === "production" && !process.env.NEXT_PUBLIC_SITE_URL) {
       console.warn("\n⚠️  NEXT_PUBLIC_SITE_ENV=production pero falta NEXT_PUBLIC_SITE_URL: canonicals y sitemap saldrán con localhost.\n");

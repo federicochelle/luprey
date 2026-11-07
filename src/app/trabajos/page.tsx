@@ -6,15 +6,19 @@ import { TrabajosFiltro } from "@/components/TrabajosFiltro";
 import { casos } from "@/content/casos";
 import { home } from "@/content/home";
 import { servicios } from "@/content/servicios";
+import { notFound } from "next/navigation";
+import { SHOW_TRABAJOS } from "@/lib/config";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: "Trabajos",
-  description: "Casos reales de marcas con las que trabajamos: contenido, catálogos, fotografía y más.",
+  description: "Casos reales de marcas con las que trabajamos: contenido, diseño gráfico, fotografía y más.",
   path: "/trabajos",
 });
 
 export default function TrabajosPage() {
+  if (!SHOW_TRABAJOS) notFound();
+
   // Solo se ofrecen filtros de servicios que tienen al menos un trabajo
   const filtros = servicios
     .filter((s) => casos.some((c) => c.servicios.includes(s.slug)))

@@ -11,6 +11,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { casos, getCaso } from "@/content/casos";
 import { home } from "@/content/home";
 import { getServicio } from "@/content/servicios";
+import { SHOW_TRABAJOS } from "@/lib/config";
 import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -20,7 +21,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/trabajos/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const caso = getCaso(slug);
-  if (!caso) return {};
+  if (!SHOW_TRABAJOS || !caso) return {};
   return buildMetadata({
     title: `${caso.cliente} · ${caso.titulo}`,
     description: caso.resumen,
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps<"/trabajos/[slug]">
 export default async function CasoPage({ params }: PageProps<"/trabajos/[slug]">) {
   const { slug } = await params;
   const caso = getCaso(slug);
-  if (!caso) notFound();
+  if (!SHOW_TRABAJOS || !caso) notFound();
 
   const serviciosCaso = caso.servicios.map(getServicio).filter((s) => s !== undefined);
 

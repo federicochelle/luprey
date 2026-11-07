@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "fetch-images": "node scripts/fetch-images.mjs",
+    "generate-favicons": "node scripts/generate-favicons.mjs",
     "fetch-videos": "node scripts/fetch-videos.mjs",
     "generate-avatars": "node scripts/generate-avatars.mjs",
     "optimize-images": "node scripts/optimize-images.mjs"
